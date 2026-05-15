@@ -3,16 +3,14 @@ Problem Description: Given an integer N, write a program to print your name N ti
 '''
 
 class Solution:
-    def rev_array(self, arr: list ,n: int):
-        if n==0:
-            return
-        print(arr[n-1])
-        self.rev_array(arr,n-1)
-        
+    def rev_array(self, arr: list , i: int):
+        if i==(len(arr)//2):
+            return arr
+        arr[i],arr[len(arr)-i-1] = arr[len(arr)-i-1], arr[i]
+        return self.rev_array(arr,i+1)        
 
 if __name__ == '__main__':
     sol = Solution()
     arr = [1,2,3,4,5]
-    n = len(arr)
-    sol.rev_array(arr,n)
+    print(sol.rev_array(arr,0))
 
